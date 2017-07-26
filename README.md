@@ -24,7 +24,9 @@ This api bootstrap is using OpenApi standard for generate auto-documentation. On
 This boostrap is using [JWT](https://jwt.io/)(Json web token) for authentication, sent in the header of the request with the key `Authorization`.
 In order to generate the JWT token you'll need to use the secret in `./config/env.js`.
 
-## Dependencies list:
+## Dependencies:
+
+For intsall dependencies use `npm i` command line.
 
 ### Dev dependencies:
 
@@ -36,7 +38,7 @@ In order to generate the JWT token you'll need to use the secret in `./config/en
 * eslint-plugin-react
 * nodemon
 
-### Dependencies:
+### Prod Dependencies:
 
 * hapi
 * hapi-auth-jwt2
