@@ -2,6 +2,28 @@
 
 This is a bootstrap to help skilvioo devs to initiate new api.
 
+## Configuration file
+
+Before launching the server you will need to create a env.js file in a config/ folder at the root of the project (`./config/env.js`). Here is an exemple:
+
+```
+const env = {
+ DEV: {
+   authentication: {
+     secret: 'skilvioo-dev-2017',
+   },
+ },
+ PROD: {
+   authentication: {
+     secret: 'skilvioo-prod-2017',
+   },
+ },
+};
+
+module.exports = env;
+
+```
+
 ## Git linter configuration
 
 pre-commit hook for linter is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-commit-eslint .git/hooks/pre-commit | chmod +x .git/hooks/pre-commit`
