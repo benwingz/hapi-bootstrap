@@ -1,4 +1,4 @@
-# Skilvioo User API
+# Skilvioo API Bootstrap
 
 This is a bootstrap to help skilvioo devs to initiate new api.
 
@@ -12,7 +12,7 @@ This api bootstrap is using [Hapi](https://hapijs.com/) framework to serve api e
 
 ## OpenApi/Swagger auto-documentation
 
-This api bootstrap is using OpenApi standard for generate auto-documentation. Once the server is lauch you can access the testable documentation via `/documentation` endpoint or access OpenApi json description with this endpoint `swagger-doc`. 
+This api bootstrap is using OpenApi standard for generate auto-documentation. Once the server is lauch you can access the testable documentation via `/documentation` endpoint or access OpenApi json description with this endpoint `swagger-doc`.
 
 ## Server launch
 
