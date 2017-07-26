@@ -12,21 +12,21 @@ This api bootstrap is using [Hapi](https://hapijs.com/) framework to serve api e
 
 ## OpenApi/Swagger auto-documentation
 
-This api bootstrap is using OpenApi standard for generate auto-documentation. Once the server is lauch you can access the testable documentation via `/documentation` endpoint or access OpenApi json description with this endpoint `swagger-doc`.
+This api bootstrap is using OpenApi standard for generate auto-documentation. Once the server is launch you can access the testable documentation via `/documentation` endpoint or access OpenApi json description with this endpoint `swagger-doc`.
 
 ## Server launch
 
-* For lauching DEV server with livereload use the command line `npm run start-dev` (livereload using [nodemon](https://github.com/remy/nodemon)).
-* For lauching PROD server with node use the command line `npm run start-prod`
+* For launching DEV server with livereload use the command line `npm run start-dev` (livereload using [nodemon](https://github.com/remy/nodemon)).
+* For launching PROD server with node use the command line `npm run start-prod`
 
-## Autentication
+## Authentication
 
 This boostrap is using [JWT](https://jwt.io/)(Json web token) for authentication, sent in the header of the request with the key `Authorization`.
 In order to generate the JWT token you'll need to use the secret in `./config/env.js`.
 
 ## Dependencies:
 
-For intsall dependencies use `npm i` command line.
+For install dependencies use `npm i` command line.
 
 ### Dev dependencies:
 
