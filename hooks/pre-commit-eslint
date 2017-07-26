@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ESLINT="$(git rev-parse --show-toplevel)/node_modules/eslint/bin/eslint.js"
+
+for file in $(git diff --cached --name-only | grep -E '\.js$')
+do
+        git show ":$file" | "$ESLINT" "$file"
+        if [ $? -ne 0 ]; then
+                exit 1
+        fi
+done
