@@ -59,6 +59,7 @@ For install dependencies use `npm i` command line.
 * eslint-plugin-jsx-a11y
 * eslint-plugin-react
 * nodemon
+* hapi-cors
 
 ### Prod Dependencies:
 
