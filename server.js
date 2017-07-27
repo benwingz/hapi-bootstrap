@@ -4,6 +4,7 @@ const Vision = require('vision');
 const hapiswaggerd = require('hapi-swaggered');
 const hapiswaggeredui = require('hapi-swaggered-ui');
 const Hapijwt = require('hapi-auth-jwt2');
+const hapicors = require('hapi-cors');
 
 const routes = require('./routes');
 const env = require('./config/env');
@@ -14,6 +15,13 @@ server.connection({ port: 3000, host: 'localhost' });
 server.register([
   Inert,
   Vision,
+  {
+    register: hapicors,
+    options: {
+      headers: ['Authorization'],
+      origins: ['*'],
+    },
+  },
   {
     register: hapiswaggerd,
     options: {
