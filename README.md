@@ -28,6 +28,24 @@ module.exports = env;
 
 pre-commit hook for linter is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-commit-eslint .git/hooks/pre-commit | chmod +x .git/hooks/pre-commit`
 
+## Fork
+To fork this project, first add the upstream to your remote
+``` git remote add upstream git@git.skilvioo.com:team/skilvioo-api-bootstrap.git ```
+
+You can check by doing
+``` git remote -v ```
+
+You should see
+```
+origin          git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (fetch)
+origin          git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (push)
+upstream        git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (fetch)
+upstream        git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (push)
+```
+
+You can update your own fork
+``` git pull upstream master ```
+
 ## Hapi
 
 This api bootstrap is using [Hapi](https://hapijs.com/) framework to serve api endpoints.
