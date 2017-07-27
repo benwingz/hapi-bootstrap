@@ -18,7 +18,7 @@ server.register([
   {
     register: hapicors,
     options: {
-      headers: ['Authorization'],
+      headers: ['authorization'],
       origins: ['*'],
     },
   },
