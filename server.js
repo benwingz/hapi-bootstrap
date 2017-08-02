@@ -3,14 +3,15 @@ const Inert = require('inert');
 const Vision = require('vision');
 const hapiswaggerd = require('hapi-swaggered');
 const hapiswaggeredui = require('hapi-swaggered-ui');
-const Hapijwt = require('hapi-auth-jwt2');
+const Hapijwt = require('hapi-auth-jwt-simple');
 const hapicors = require('hapi-cors');
+const jwt = require('jsonwebtoken');
 
 const routes = require('./routes');
 const env = require('./config/env');
 
 const server = new Hapi.Server();
-server.connection({ port: 3000, host: 'localhost' });
+server.connection({ port: 2999, host: 'localhost' });
 
 server.register([
   Inert,
@@ -20,6 +21,7 @@ server.register([
     options: {
       headers: ['authorization', 'content-type'],
       origins: ['*'],
+      methods: ['POST, GET, OPTIONS, PUT, DELETE'],
     },
   },
   {
@@ -47,12 +49,14 @@ server.register([
 ], (err) => {
   server.auth.strategy('jwt', 'jwt', {
     key: env[process.env.ENV].authentication.secret,
-    verifyFunc: (decoded, request, callback) => {
-      // do your checks to see if the person is valid
-      if (!decoded) {
-        return callback(null, false);
-      }
-      return callback(null, true);
+    validateFunc: (token, request, callback) => {
+      const publicKey = 's4Jpy2ZwcRmg3wRQTHoQ';
+      jwt.verify(token, publicKey, (error, decoded) => {
+        if (error) {
+          return callback(err);
+        }
+        return callback(null, true, decoded);
+      });
     },
     verifyOptions: { algorithms: ['HS256'] },
   });
