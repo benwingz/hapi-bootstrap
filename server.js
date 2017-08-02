@@ -48,7 +48,6 @@ server.register([
   },
 ], (err) => {
   server.auth.strategy('jwt', 'jwt', {
-    key: env[process.env.ENV].authentication.secret,
     validateFunc: (token, request, callback) => {
       jwt.verify(token, env[process.env.ENV].authentication.secret, (error, decoded) => {
         if (error) {
@@ -57,7 +56,6 @@ server.register([
         return callback(null, true, decoded);
       });
     },
-    verifyOptions: { algorithms: ['HS256'] },
   });
   if (err) throw err;
   routes(server);
