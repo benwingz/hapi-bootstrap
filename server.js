@@ -50,8 +50,7 @@ server.register([
   server.auth.strategy('jwt', 'jwt', {
     key: env[process.env.ENV].authentication.secret,
     validateFunc: (token, request, callback) => {
-      const publicKey = 's4Jpy2ZwcRmg3wRQTHoQ';
-      jwt.verify(token, publicKey, (error, decoded) => {
+      jwt.verify(token, env[process.env.ENV].authentication.secret, (error, decoded) => {
         if (error) {
           return callback(err);
         }
