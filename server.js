@@ -3,9 +3,8 @@ const Inert = require('inert');
 const Vision = require('vision');
 const hapiswaggerd = require('hapi-swaggered');
 const hapiswaggeredui = require('hapi-swaggered-ui');
-const Hapijwt = require('hapi-auth-jwt-simple');
+const Hapijwt = require('hapi-auth-jwt2');
 const hapicors = require('hapi-cors');
-const jwt = require('jsonwebtoken');
 
 const routes = require('./routes');
 const env = require('./config/env');
@@ -21,7 +20,7 @@ server.register([
     options: {
       headers: ['authorization', 'content-type'],
       origins: ['*'],
-      methods: ['POST, GET, OPTIONS, PUT, DELETE'],
+      methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
     },
   },
   {
@@ -48,14 +47,14 @@ server.register([
   },
 ], (err) => {
   server.auth.strategy('jwt', 'jwt', {
-    validateFunc: (token, request, callback) => {
-      jwt.verify(token, env[process.env.ENV].authentication.secret, (error, decoded) => {
-        if (error) {
-          return callback(err);
-        }
-        return callback(null, true, decoded);
-      });
+    key: env[process.env.ENV].authentication.secret,
+    validateFunc: (decoded, request, callback) => {
+      if (!decoded) {
+        return callback(null, false);
+      }
+      return callback(null, true);
     },
+    verifyOptions: { algorithms: ['HS256'] },
   });
   if (err) throw err;
   routes(server);
