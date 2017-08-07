@@ -10,18 +10,17 @@ Before launching the server you will need to create a env.js file in a config/ f
 const env = {
  DEV: {
    authentication: {
-     secret: 'skilvioo-dev-2017',
+     secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'], // You can add one or many secret
    },
  },
  PROD: {
    authentication: {
-     secret: 'skilvioo-prod-2017',
+     secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
    },
  },
 };
 
 module.exports = env;
-
 ```
 
 ## Git linter configuration
