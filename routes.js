@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const FooController = require('./foo/foo.controller');
 
 module.exports = (server) => {
   server.route({
@@ -6,7 +7,7 @@ module.exports = (server) => {
     path: '/',
     config: {
       handler: (request, reply) => {
-        reply(`Skilvioo user api running at ${request.info.host}`);
+        reply(`Skilvioo bootstrap api running at ${request.info.host}`);
       },
       description: 'Initial endoint to test if the API is up and running',
       notes: 'Return path of the API',
@@ -30,23 +31,35 @@ module.exports = (server) => {
 
   server.route({
     method: 'POST',
-    path: '/hello',
+    path: '/foo',
     config: {
       handler: (request, reply) => {
         const name = request.payload.name || request.query.name || 'skilvioo';
         reply(`Hello ${name}!`);
       },
-      description: 'Post a User',
-      notes: 'Return user formated with UUID',
+      description: 'Post a foo',
+      notes: 'Return foo posted',
       tags: ['api'],
       validate: {
         payload: {
-          name: Joi.string().description('Your name'),
+          name: Joi.string().description('Your foo name'),
         },
         query: {
-          name: Joi.string().description('Your name'),
+          name: Joi.string().description('Your foo name'),
         },
       },
+    },
+  });
+  server.route({
+    method: 'GET',
+    path: '/foo',
+    config: {
+      handler: (request, reply) => {
+        FooController.getAllFoo(request, reply);
+      },
+      description: 'Get all foo',
+      notes: 'Return all foo',
+      tags: ['api'],
     },
   });
 };

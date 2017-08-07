@@ -6,15 +6,15 @@
     "start": "ENV='DEV' node index.js",
     "start-prod": "ENV='PROD' node server.js",
     "start-dev": "ENV='DEV' ./node_modules/nodemon/bin/nodemon.js server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-dev": "ENV='DEV' mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.skilvioo.com:team/skilvioo-user-api.git"
+    "url": "git@git.skilvioo.com:team/skilvioo-bootstrap-api.git"
   },
   "author": "Skilvioo",
   "license": "ISC",
-  "description": "Skilvioo user API",
+  "description": "Skilvioo Bootstrap API",
   "dependencies": {
     "hapi": "^16.4.3",
     "hapi-auth-jwt2": "^7.3.0",
@@ -25,7 +25,10 @@
     "inert": "^4.2.0",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
-    "vision": "^4.1.1"
+    "vision": "^4.1.1",
+    "uuid": "^3.1.0",
+    "neo4j-driver": "^1.4.0",
+    "parse-neo4j": "^0.6.8"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -34,6 +37,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "mocha": "^3.5.0"
   }
 }

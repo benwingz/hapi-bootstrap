@@ -38,8 +38,9 @@ Thumbs.db
 
 .pre-commit.swp
 
-./idea
+.idea/
 node_modules/
 config/env.js
 package-lock.json
+.history/
 

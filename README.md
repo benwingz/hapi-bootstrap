@@ -8,20 +8,29 @@ Before launching the server you will need to create a env.js file in a config/ f
 
 ```
 const env = {
- DEV: {
-   authentication: {
-     secret: 'skilvioo-dev-2017',
-   },
- },
- PROD: {
-   authentication: {
-     secret: 'skilvioo-prod-2017',
-   },
- },
+  DEV: {
+    DATABASE: {
+      URI: 'bolt://localhost:7687',
+      USER: 'neo4j',
+      PASSWORD: 'root',
+    },
+    authentication: {
+      secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
+    },
+  },
+  PROD: {
+    DATABASE: {
+      URI: '',
+      USER: '',
+      PASSWORD: '',
+    },
+    authentication: {
+      secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
+    },
+  },
 };
 
 module.exports = env;
-
 ```
 
 ## Git linter configuration
@@ -89,3 +98,6 @@ For install dependencies use `npm i` command line.
 * inert
 * joi
 * vision
+
+### Integration test
+Run npm run test-dev
