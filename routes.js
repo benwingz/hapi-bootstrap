@@ -34,17 +34,13 @@ module.exports = (server) => {
     path: '/foo',
     config: {
       handler: (request, reply) => {
-        const name = request.payload.name || request.query.name || 'skilvioo';
-        reply(`Hello ${name}!`);
+        FooController.createFoo(request, reply);
       },
       description: 'Post a foo',
       notes: 'Return foo posted',
       tags: ['api'],
       validate: {
         payload: {
-          name: Joi.string().description('Your foo name'),
-        },
-        query: {
           name: Joi.string().description('Your foo name'),
         },
       },

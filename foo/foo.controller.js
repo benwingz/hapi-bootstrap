@@ -9,6 +9,16 @@ function getAllFoo(request, reply) {
     });
 }
 
+function createFoo(request, reply) {
+  FooService.createFoo(request.payload.name)
+    .then((foo) => {
+      reply(foo);
+    }).catch((error) => {
+      reply({ detail: error }).code(520);
+    });
+}
+
 module.exports = {
   getAllFoo,
+  createFoo,
 };
