@@ -60,9 +60,7 @@ server.register([
   routes(server);
   server.start((error) => {
     if (error) {
-      console.log(error);
-    } else {
-      console.log('Server running at:', server.info.uri);
+      throw error;
     }
   });
 });
