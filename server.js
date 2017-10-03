@@ -5,6 +5,8 @@ const hapiswaggerd = require('hapi-swaggered');
 const hapiswaggeredui = require('hapi-swaggered-ui');
 const Hapijwt = require('hapi-auth-jwt2');
 const hapicors = require('hapi-cors');
+const hapiI18n = require('hapi-basic-i18n');
+const Path = require('path');
 
 const routes = require('./routes');
 const env = require('./config/env');
@@ -15,6 +17,14 @@ server.connection({ port: 2999, host: 'localhost' });
 server.register([
   Inert,
   Vision,
+  {
+    register: hapiI18n,
+    options: {
+      locale_path: Path.join(__dirname, './assets/i18n/'),
+      default_language: 'FR',
+      available_languages: ['FR'],
+    },
+  },
   {
     register: hapicors,
     options: {
