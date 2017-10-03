@@ -20,6 +20,19 @@ describe('Foo', () => {
       doneBefore();
     });
   });
+  describe('GET API initial endpoint', () => {
+    it('should get api initial url', (doneIt) => {
+      const req = {
+        method: 'GET',
+        url: '/',
+      };
+      server.inject(req, (res) => {
+        assert.equal(res.statusCode, 200);
+        assert.equal(res.result, "Skilvioo bootstrap api est disponible à l'address localhost:2999");
+        doneIt();
+      });
+    });
+  });
   describe('GET All foo', () => {
     it('should get a list of 3 foo', (doneIt) => {
       const req = {

@@ -7,7 +7,7 @@ module.exports = (server) => {
     path: '/',
     config: {
       handler: (request, reply) => {
-        reply(`Skilvioo bootstrap api running at ${request.info.host}`);
+        reply(request.i18n('startupMessage') + request.info.host);
       },
       description: 'Initial endoint to test if the API is up and running',
       notes: 'Return path of the API',
