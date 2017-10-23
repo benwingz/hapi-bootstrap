@@ -37,6 +37,8 @@ module.exports = env;
 
 pre-commit hook for linter is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-commit-eslint .git/hooks/pre-commit | chmod +x .git/hooks/pre-commit`
 
+pre-commit hook for launching test is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-push-test .git/hooks/pre-push | chmod +x .git/hooks/pre-push`
+
 ## Fork
 To fork this project, first add the upstream to your remote
 ``` git remote add upstream git@git.skilvioo.com:team/skilvioo-api-bootstrap.git ```

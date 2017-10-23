@@ -1,0 +1,17 @@
+TST_EXIT_CODE=0
+echo 'Running tests...'
+${NPM} run test-dev
+TST_EXIT_CODE=$?
+
+# mocha tests produces exit code of 0 if the code has no errors
+if [[ ${TST_EXIT_CODE} -ne 0 ]]; then
+  echo ""
+  echo "Tests failed. Commit aborted."
+fi
+
+# Exit if any error codes
+ERROR=$((${JSH_EXIT_CODE} + ${TST_EXIT_CODE}))
+if [[ ${ERROR} -ne 0 ]]; then
+  git stash pop -q
+  exit ${ERROR}
+fi
