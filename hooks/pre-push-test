@@ -1,3 +1,5 @@
+#!/bin/sh
+
 TST_EXIT_CODE=0
 echo 'Running tests...'
 ${NPM} run test-dev
