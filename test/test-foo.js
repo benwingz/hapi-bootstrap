@@ -28,7 +28,7 @@ describe('Foo', () => {
       };
       server.inject(req, (res) => {
         assert.equal(res.statusCode, 200);
-        assert.equal(res.result, "Skilvioo bootstrap api est disponible à l'address localhost:2999");
+        assert.equal(res.result, "Skilvioo bootstrap api est disponible à l'adresse localhost:2999");
         doneIt();
       });
     });
