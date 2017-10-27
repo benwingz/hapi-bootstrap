@@ -12,7 +12,7 @@ const good = require('good');
 const routes = require('./routes');
 const env = require('./config/env');
 
-const server = new Hapi.Server({ debug: { request: ['error'] }});
+const server = new Hapi.Server({ debug: { request: ['error'] } });
 server.connection({ port: 2999, host: 'localhost' });
 
 server.register([
@@ -74,17 +74,6 @@ server.register([
         {
           module: 'good-console',
         }, 'stdout'],
-        http: [{
-          module: 'good-squeeze',
-          name: 'Squeeze',
-          args: [{
-            response: '*',
-          }],
-        },
-        {
-          module: 'good-http',
-          args: ["http://logs.skilvioo.com:5055"],
-        }],
       },
     },
   },
