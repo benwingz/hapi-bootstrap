@@ -7,11 +7,12 @@ const Hapijwt = require('hapi-auth-jwt2');
 const hapicors = require('hapi-cors');
 const hapiI18n = require('hapi-basic-i18n');
 const Path = require('path');
+const good = require('good');
 
 const routes = require('./routes');
 const env = require('./config/env');
 
-const server = new Hapi.Server();
+const server = new Hapi.Server({ debug: { request: ['error'] }});
 server.connection({ port: 2999, host: 'localhost' });
 
 server.register([
@@ -53,6 +54,38 @@ server.register([
         placeholder: 'Enter your jwt token here',
       },
       swaggerOptions: {},
+    },
+  },
+  {
+    register: good,
+    options: {
+      ops: {
+        interval: 1000,
+      },
+      reporters: {
+        console: [{
+          module: 'good-squeeze',
+          name: 'Squeeze',
+          args: [{
+            response: '*',
+            error: '*',
+          }],
+        },
+        {
+          module: 'good-console',
+        }, 'stdout'],
+        http: [{
+          module: 'good-squeeze',
+          name: 'Squeeze',
+          args: [{
+            response: '*',
+          }],
+        },
+        {
+          module: 'good-http',
+          args: ["http://logs.skilvioo.com:5055"],
+        }],
+      },
     },
   },
 ], (err) => {
