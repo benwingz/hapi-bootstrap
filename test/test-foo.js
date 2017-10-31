@@ -15,7 +15,7 @@ describe('Foo', () => {
   before((doneBefore) => {
     userFixtures.mockUser().then((_user) => {
       user = _user;
-      const secret = env[process.env.ENV].authentication.secret[0];
+      const secret = env.authentication.secret[0];
       token = jwt.sign(user, secret);
       doneBefore();
     });

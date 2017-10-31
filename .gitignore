@@ -40,7 +40,6 @@ Thumbs.db
 
 .idea/
 node_modules/
-config/env.js
+config/dev.js
 package-lock.json
 .history/
-

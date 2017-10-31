@@ -6,7 +6,7 @@ const parser = require('parse-neo4j');
  * @returns {Driver}
  */
 function createDriver() {
-  const params = env[process.env.ENV].DATABASE;
+  const params = env.DATABASE;
   return neo4j.driver(params.URI, neo4j.auth.basic(params.USER, params.PASSWORD));
 }
 

@@ -79,7 +79,7 @@ server.register([
   },
 ], (err) => {
   server.auth.strategy('jwt', 'jwt', {
-    key: env[process.env.ENV].authentication.secret,
+    key: env.authentication.secret,
     validateFunc: (decoded, request, callback) => {
       if (!decoded) {
         return callback(null, false);
