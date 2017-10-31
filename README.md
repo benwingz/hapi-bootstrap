@@ -4,33 +4,22 @@ This is a bootstrap to help skilvioo devs to initiate new api.
 
 ## Configuration file
 
-Before launching the server you will need to create a env.js file in a config/ folder at the root of the project (`./config/env.js`). Here is an exemple:
+Before launching the server you will need to create a dev.js file in the config/ folder at the root of the project (`./config/dev.js`). Here is an exemple:
 
 ```
-const env = {
-  DEV: {
-    DATABASE: {
-      URI: 'bolt://localhost:7687',
-      USER: 'neo4j',
-      PASSWORD: 'root',
-    },
-    authentication: {
-      secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
-    },
+const DEV = {
+  DATABASE: {
+    URI: 'bolt://localhost:7687',
+    USER: 'neo4j',
+    PASSWORD: 'root',
   },
-  PROD: {
-    DATABASE: {
-      URI: '',
-      USER: '',
-      PASSWORD: '',
-    },
-    authentication: {
-      secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
-    },
+  authentication: {
+    secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
   },
 };
 
-module.exports = env;
+module.exports = DEV;
+
 ```
 
 ## Git linter configuration
