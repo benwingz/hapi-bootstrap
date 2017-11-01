@@ -1,5 +1,5 @@
 {
-  "name": "skilvioo-api-bootstrap",
+  "name": "hapi-boostrap-api",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -12,9 +12,9 @@
     "type": "git",
     "url": "git@git.skilvioo.com:team/skilvioo-bootstrap-api.git"
   },
-  "author": "Skilvioo",
+  "author": "Benjamin Roullet",
   "license": "ISC",
-  "description": "Skilvioo Bootstrap API",
+  "description": "Hapi.js api boostrap with swagger auto-doc, jwt auth, i18n and good logging",
   "dependencies": {
     "good": "^7.3.0",
     "good-console": "^6.4.0",
