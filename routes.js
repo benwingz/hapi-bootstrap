@@ -33,6 +33,7 @@ module.exports = (server) => {
     method: 'POST',
     path: '/foo',
     config: {
+      auth: 'jwt',
       handler: (request, reply) => {
         FooController.createFoo(request, reply);
       },

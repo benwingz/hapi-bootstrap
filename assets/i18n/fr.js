@@ -1,3 +1,3 @@
 module.exports = {
-  startupMessage: "Skilvioo bootstrap api est disponible à l'adresse ",
+  startupMessage: "Hapi bootstrap api est disponible à l'adresse ",
 };

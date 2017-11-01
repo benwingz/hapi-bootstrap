@@ -12,8 +12,12 @@ const good = require('good');
 const routes = require('./routes');
 const env = require('./config/env');
 
+const mongoose = require('mongoose');
+
+mongoose.connect(env.DATABASE);
+
 const server = new Hapi.Server({ debug: { request: ['error'] } });
-server.connection({ port: 2999, host: 'localhost' });
+server.connection({ port: process.env.PORT || 8080, host: 'localhost' });
 
 server.register([
   Inert,
@@ -46,7 +50,7 @@ server.register([
   {
     register: hapiswaggeredui,
     options: {
-      title: 'Skilvioo matching API',
+      title: 'Hapi matching API',
       path: '/documentation',
       authorization: { // see above
         field: 'Authorization',

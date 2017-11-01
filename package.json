@@ -30,6 +30,7 @@
     "inert": "^4.2.0",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.12.5",
     "neo4j-driver": "^1.4.0",
     "parse-neo4j": "^0.6.8",
     "uuid": "^3.1.0",

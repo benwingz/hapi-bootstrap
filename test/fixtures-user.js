@@ -1,22 +1,25 @@
-const utils = require('../common/utils');
+const mongoose = require('mongoose');
 
-const driver = utils.createDriver();
-const session = driver.session();
+const Schema = mongoose.Schema;
 
+const User = mongoose.model('User', new Schema({
+  email: String,
+  password: String,
+}));
 
 function mockUser() {
-  return session.run(`MERGE (u:User { 
-    id: "d8078fc8-9795-414d-9111-fbf8499487ee",
-    firstname: "prenom",
-    lastname: "nom",
-    phone: "0627330274",
-    email: "fixtures@domain.com",
-    password: "48e62d5cfce9826479511669cfb97869b5e08c7c20da0a0fec00e499f73d9985cf097943e8c3ebcf7fd432ff1aa74774650be34844a3a745097920ae51f98b1a",
-    salt: "b55df175e8c3f3212b457fbdd3dcafbb" }) 
-    RETURN u`)
-    .then(user => utils.parse(user, true));
+  const newUser = new User({
+    email: 'mailTest@test.com',
+    password: 'password',
+  });
+  return newUser.save();
+}
+
+function eraseMockUser() {
+  return User.deleteOne({ email: 'mailTest@test.com' });
 }
 
 module.exports = {
   mockUser,
+  eraseMockUser,
 };

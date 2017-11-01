@@ -1,16 +1,16 @@
-const foos = ['foo 1', 'foo 2', 'foo 3'];
+const Foo = require('./foo.model');
 
 function getAllFoo() {
   return new Promise((resolve) => {
-    resolve(foos);
+    resolve(Foo.find({}));
   });
 }
 
 function createFoo(name) {
-  foos.push(name);
-  return new Promise((resolve) => {
-    resolve(name);
+  const newFoo = new Foo({
+    name,
   });
+  return newFoo.save();
 }
 
 module.exports = {

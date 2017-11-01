@@ -1,4 +1,4 @@
-# Skilvioo API Bootstrap
+# Hapi API Bootstrap
 
 This is a bootstrap to help skilvioo devs to initiate new api.
 
@@ -8,17 +8,14 @@ Before launching the server you will need to create a dev.js file in the config/
 
 ```
 const DEV = {
-  DATABASE: {
-    URI: 'bolt://localhost:7687',
-    USER: 'neo4j',
-    PASSWORD: 'root',
-  },
+  DATABASE: "localhost:27017/foos",
   authentication: {
-    secret: ['s4Jpy2ZwcRmg3wRQTHoQ', 'jx7aZlvYdfknrleqFmSl'],
+    secret: "s4Jpy2ZwcRmg3wRQTHoQ",
   },
 };
 
 module.exports = DEV;
+
 
 ```
 
@@ -27,24 +24,6 @@ module.exports = DEV;
 pre-commit hook for linter is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-commit-eslint .git/hooks/pre-commit | chmod +x .git/hooks/pre-commit`
 
 pre-commit hook for launching test is in `hooks/` folder. In order to be use you have to run this command when setting your dev env `cp hooks/pre-push-test .git/hooks/pre-push | chmod +x .git/hooks/pre-push`
-
-## Fork
-To fork this project, first add the upstream to your remote
-``` git remote add upstream git@git.skilvioo.com:team/skilvioo-api-bootstrap.git ```
-
-You can check by doing
-``` git remote -v ```
-
-You should see
-```
-origin          git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (fetch)
-origin          git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (push)
-upstream        git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (fetch)
-upstream        git@git.skilvioo.com:YOURUSERNAME/skilvioo-api-bootstrap.git (push)
-```
-
-You can update your own fork
-``` git pull upstream master ```
 
 ## Hapi
 
@@ -62,7 +41,7 @@ This api bootstrap is using OpenApi standard for generate auto-documentation. On
 ## Authentication
 
 This boostrap is using [JWT](https://jwt.io/)(Json web token) for authentication, sent in the header of the request with the key `Authorization`.
-In order to generate the JWT token you'll need to use the secret in `./config/env.js`.
+In order to generate the JWT token you'll need to use the secret in `./config/dev.js`.
 
 ## Dependencies:
 
@@ -89,6 +68,7 @@ For install dependencies use `npm i` command line.
 * inert
 * joi
 * vision
+* mongoose
 
 ### Integration test
 Run npm run test-dev

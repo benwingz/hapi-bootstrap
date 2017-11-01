@@ -5,6 +5,7 @@ const userFixtures = require('./fixtures-user');
 
 const describe = require('mocha').describe;
 const before = require('mocha').before;
+const after = require('mocha').after;
 const it = require('mocha').it;
 const assert = require('chai').assert;
 
@@ -15,9 +16,14 @@ describe('Foo', () => {
   before((doneBefore) => {
     userFixtures.mockUser().then((_user) => {
       user = _user;
-      const secret = env.authentication.secret[0];
+      const secret = env.authentication.secret;
       token = jwt.sign(user, secret);
       doneBefore();
+    });
+  });
+  after((doneAfter) => {
+    userFixtures.eraseMockUser().then(() => {
+      doneAfter();
     });
   });
   describe('GET API initial endpoint', () => {
@@ -28,7 +34,8 @@ describe('Foo', () => {
       };
       server.inject(req, (res) => {
         assert.equal(res.statusCode, 200);
-        assert.equal(res.result, "Skilvioo bootstrap api est disponible à l'adresse localhost:2999");
+        const port = process.env.PORt || '8080';
+        assert.equal(res.result, `Hapi bootstrap api est disponible à l'adresse localhost:${port}`);
         doneIt();
       });
     });
@@ -45,7 +52,6 @@ describe('Foo', () => {
       server.inject(req, (res) => {
         assert.equal(res.statusCode, 200);
         assert.isArray(res.result);
-        assert.equal(res.result.length, 3);
         doneIt();
       });
     });
@@ -64,7 +70,7 @@ describe('Foo', () => {
       };
       server.inject(req, (res) => {
         assert.equal(res.statusCode, 200);
-        assert.equal(res.result, 'Foo test');
+        assert.equal(res.result.name, 'Foo test');
         doneIt();
       });
     });
